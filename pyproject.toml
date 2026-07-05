@@ -1,10 +1,12 @@
 [build-system]
-requires = ["setuptools>=72", "setuptools-scm>=8"]
-build-backend = "setuptools.backends.legacy:build"
+#requires = ["setuptools>=72", "setuptools-scm>=8"]
+#build-backend = "setuptools.backends.legacy:build"
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "meteopendata2netcdf"
-version = "0.1b0"
+version = "0.2b0"
 description = "Download ECMWF IFS open-data forecasts and export them to NetCDF"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
@@ -83,9 +85,13 @@ select = [
     "RUF", # ruff-specific
 ]
 ignore = [
+    "ANN401",  # **kwargs: Any est légitime pour les wrappers de fonctions tierces
     "ANN101",  # missing type annotation for self
     "ANN102",  # missing type annotation for cls
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN", "S101"]  # annotations et assert autorisés dans les tests
 
 [tool.ruff.lint.isort]
 known-first-party = ["meteopendata2netcdf"]
@@ -98,6 +104,13 @@ python_version  = "3.12"
 strict          = true
 warn_return_any = true
 show_error_codes = true
+
+# cfgrib et ecmwf-opendata ne fournissent pas de stubs ni de marqueur py.typed.
+# On les ignore par module plutôt qu'avec ignore_missing_imports = true (global)
+# pour conserver la rigueur sur tous les autres imports.
+[[tool.mypy.overrides]]
+module = ["cfgrib", "cfgrib.*", "ecmwf.opendata", "ecmwf.*"]
+ignore_missing_imports = true
 
 # ---------------------------------------------------------------------------
 # pytest

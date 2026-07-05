@@ -23,9 +23,9 @@ from ._downloader import DownloadResult, IFSSurfaceDownloader
 from ._exceptions import DatasetBuildError, DownloadError
 
 __all__ = [
-    "__version__",
-    "IFSSurfaceDownloader",
-    "DownloadResult",
-    "DownloadError",
     "DatasetBuildError",
+    "DownloadError",
+    "DownloadResult",
+    "IFSSurfaceDownloader",
+    "__version__",
 ]

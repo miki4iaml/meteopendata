@@ -7,7 +7,7 @@
 #: - 10v : 10-metre V-wind component (m s⁻¹)
 SURFACE_PARAMS: list[str] = ["2t", "2d", "10u", "10v"]
 
-#: Default forecast steps (hours): 0–72 h every 6 h.
+#: Default forecast steps (hours): 0-72 h every 6 h.
 DEFAULT_STEPS: list[int] = list(range(0, 73, 6))
 
 #: IFS HRES operational run hours available via stream=oper.

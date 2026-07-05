@@ -77,9 +77,7 @@ def load_surface_dataset(grib_path: Path) -> xr.Dataset:
     processed: list[xr.Dataset] = []
     for ds in raw_datasets:
         height: float | None = (
-            float(ds.coords["heightAboveGround"])
-            if "heightAboveGround" in ds.coords
-            else None
+            float(ds.coords["heightAboveGround"]) if "heightAboveGround" in ds.coords else None
         )
 
         if "valid_time" in ds.coords:

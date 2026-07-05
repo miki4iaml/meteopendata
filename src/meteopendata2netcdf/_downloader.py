@@ -6,7 +6,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 
 import xarray as xr
 from ecmwf.opendata import Client
@@ -49,9 +49,7 @@ class DownloadResult:
 
     def __repr__(self) -> str:
         ds_info = (
-            f"Dataset(vars={list(self.dataset.data_vars)})"
-            if self.dataset is not None
-            else "None"
+            f"Dataset(vars={list(self.dataset.data_vars)})" if self.dataset is not None else "None"
         )
         return (
             f"DownloadResult(\n"
@@ -63,7 +61,7 @@ class DownloadResult:
             f")"
         )
 
-    def to_netcdf(self, path: str | Path, **kwargs: object) -> Path:
+    def to_netcdf(self, path: str | Path, **kwargs: Any) -> Path:
         """Write the in-memory dataset to a NetCDF file.
 
         Args:
@@ -83,7 +81,8 @@ class DownloadResult:
                 "Re-run download() with load_dataset=True."
             )
         out = Path(path).resolve()
-        self.dataset.to_netcdf(out, **kwargs)  # type: ignore[arg-type]
+        # str(out) selects the overload: path=str|PathLike, compute=True -> None
+        self.dataset.to_netcdf(str(out), **kwargs)
         logger.info("Dataset written to %s", out)
         return out
 
@@ -102,7 +101,7 @@ class IFSSurfaceDownloader:
         params:     ECMWF parameter short-names to download.
                     Defaults to :data:`~._constants.SURFACE_PARAMS`.
         steps:      Forecast lead times in hours.
-                    Defaults to :data:`~._constants.DEFAULT_STEPS` (0–72 h, step 6 h).
+                    Defaults to :data:`~._constants.DEFAULT_STEPS` (0-72 h, step 6 h).
 
     Example::
 
@@ -276,6 +275,7 @@ class IFSSurfaceDownloader:
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _validate_run_hour(time: int) -> None:
     """Raise ``ValueError`` if *time* is not a valid IFS HRES oper run hour.

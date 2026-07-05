@@ -5,11 +5,11 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
-from pathlib import Path
+from typing import cast
 
 from . import __version__
 from ._downloader import IFSSurfaceDownloader, Source
-from ._exceptions import DownloadError, DatasetBuildError
+from ._exceptions import DatasetBuildError, DownloadError
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -17,29 +17,33 @@ def _build_parser() -> argparse.ArgumentParser:
         prog="meteopendata2netcdf",
         description=(
             "Download ECMWF IFS surface forecasts (temperature, wind, humidity) "
-            "for steps 0–72 h (every 6 h) and optionally export to NetCDF."
+            "for steps 0-72 h (every 6 h) and optionally export to NetCDF."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
-        "--version", "-V",
+        "--version",
+        "-V",
         action="version",
         version=f"%(prog)s {__version__}",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         default="./ifs_output",
         metavar="DIR",
         help="Directory where the GRIB2 (and optional NetCDF) file is saved.",
     )
     parser.add_argument(
-        "--source", "-s",
+        "--source",
+        "-s",
         choices=["ecmwf", "aws", "azure", "google"],
         default="ecmwf",
         help="Data source.",
     )
     parser.add_argument(
-        "--time", "-t",
+        "--time",
+        "-t",
         type=int,
         choices=[0, 12],
         default=None,
@@ -47,7 +51,8 @@ def _build_parser() -> argparse.ArgumentParser:
         help="IFS run hour (UTC). Default: latest available run.",
     )
     parser.add_argument(
-        "--netcdf", "-n",
+        "--netcdf",
+        "-n",
         metavar="FILE",
         default=None,
         help="If provided, also write the dataset to this NetCDF file path.",
@@ -89,7 +94,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         dl = IFSSurfaceDownloader(
             output_dir=args.output,
-            source=args.source,  # type: ignore[arg-type]
+            source=cast(Source, args.source),
         )
         result = dl.download(time=args.time, load_dataset=load_ds)
         print(result)
