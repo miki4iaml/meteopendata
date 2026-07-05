@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - "v*.*.*"
+  release:
+    types: [published]   # ← déclenché quand vous publiez via l'IHM GitHub
+  workflow_dispatch:     # ← déclenché manuellement depuis l'onglet Actions
 
 permissions:
   contents: read
