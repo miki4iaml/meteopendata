@@ -7,7 +7,7 @@ on:
   release:
     types: [published]   # ← déclenché quand vous publiez via l'IHM GitHub
   workflow_dispatch:     # ← déclenché manuellement depuis l'onglet Actions
-    
+
 permissions:
   contents: read
   id-token: write   # required for Trusted Publishing (OIDC)
