@@ -45,11 +45,11 @@ docs = [
 ]
 
 [project.urls]
-Homepage       = "https://github.com/your-username/meteopendata2netcdf"
+Homepage       = "https://github.com/miki4iaml/meteopendata2netcdf"
 Documentation  = "https://meteopendata2netcdf.readthedocs.io"
-Repository     = "https://github.com/your-username/meteopendata2netcdf"
-"Bug Tracker"  = "https://github.com/your-username/meteopendata2netcdf/issues"
-Changelog      = "https://github.com/your-username/meteopendata2netcdf/blob/main/CHANGELOG.md"
+Repository     = "https://github.com/miki4iaml/meteopendata2netcdf"
+"Bug Tracker"  = "https://github.com/miki4iaml/meteopendata2netcdf/issues"
+Changelog      = "https://github.com/miki4iaml/meteopendata2netcdf/blob/main/CHANGELOG.md"
 
 [project.scripts]
 meteopendata2netcdf = "meteopendata2netcdf._cli:main"
