@@ -26,7 +26,7 @@ Le package est né d'une conversation de conception itérative qui a également
 considéré `meteofetch <https://github.com/CyrilJl/meteofetch>`_, un package plus
 généraliste couvrant les modèles Météo-France (AROME, ARPEGE, MFWAM) et les
 modèles ECMWF (IFS, AIFS). Les deux packages ciblent les mêmes serveurs ECMWF
-mais avec des philosophies différentes — voir :ref:`comparison-meteofetch`.
+mais avec des cibles différentes — voir :ref:`comparison-meteofetch`.
 
 
 .. _comparison-meteofetch:
@@ -501,7 +501,7 @@ Lancer la chaîne qualité complète
    # Tests d'intégration réseau (télécharge ~5 Mo de données ECMWF réelles)
    pytest -m network
 
-R�gles pour les pull requests
+R�gles pour les pull requests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. **Un PR = une fonctionnalité ou un correctif**. Les refactorisations et les

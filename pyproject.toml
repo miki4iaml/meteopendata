@@ -6,8 +6,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "meteopendata2netcdf"
-version = "0.2.1b0"
-description = "Download ECMWF IFS open-data forecasts and export them to NetCDF"
+version = "0.3.0"
+description = "Leverages open-data weather information via the NetCDF interface"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
 authors = [{ name = "Miki", email = "miki4ia@gmail.com" }]
