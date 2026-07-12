@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "meteopendata2netcdf"
-version = "0.3.0"
+version = "0.3.1"
 description = "Leverages open-data weather information via the NetCDF interface"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
@@ -45,11 +45,11 @@ docs = [
 ]
 
 [project.urls]
-Homepage       = "https://github.com/your-username/meteopendata2netcdf"
+Homepage       = "https://github.com/miki4iaml/meteopendata2netcdf"
 Documentation  = "https://meteopendata2netcdf.readthedocs.io"
-Repository     = "https://github.com/your-username/meteopendata2netcdf"
-"Bug Tracker"  = "https://github.com/your-username/meteopendata2netcdf/issues"
-Changelog      = "https://github.com/your-username/meteopendata2netcdf/blob/main/CHANGELOG.md"
+Repository     = "https://github.com/miki4iaml/meteopendata2netcdf"
+"Bug Tracker"  = "https://github.com/miki4iaml/meteopendata2netcdf/issues"
+Changelog      = "https://github.com/miki4iaml/meteopendata2netcdf/blob/main/CHANGELOG.md"
 
 [project.scripts]
 meteopendata2netcdf = "meteopendata2netcdf._cli:main"

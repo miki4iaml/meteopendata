@@ -1,6 +1,6 @@
 # meteopendata2netcdf
 
-[![CI](https://github.com/your-username/meteopendata2netcdf/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/meteopendata2netcdf/actions/workflows/ci.yml)
+[![CI](https://github.com/miki4iaml/meteopendata2netcdf/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/meteopendata2netcdf/actions/workflows/ci.yml)
 [![Documentation](https://readthedocs.org/projects/meteopendata2netcdf/badge/?version=latest)](https://meteopendata2netcdf.readthedocs.io)
 [![PyPI](https://img.shields.io/pypi/v/meteopendata2netcdf)](https://pypi.org/project/meteopendata2netcdf)
 [![Python](https://img.shields.io/pypi/pyversions/meteopendata2netcdf)](https://pypi.org/project/meteopendata2netcdf)
