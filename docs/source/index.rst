@@ -11,6 +11,7 @@ meteopendata2netcdf
    sources/index
    design
    contributing
+   api
    changelog
 
 |ci| |coverage| |pypi| |python| |docs| |license|
