@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "meteopendata2netcdf"
-version = "0.3.0"
+version = "0.3.1"
 description = "Leverages open-data weather information via the NetCDF interface"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
