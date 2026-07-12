@@ -23,10 +23,10 @@ rosée 2 m, vent 10 m) depuis l'API publique `ecmwf-opendata
 conforme aux conventions CF.
 
 Le package est né d'une conversation de conception itérative qui a également
-considéré `meteofetch <https://github.com/CyrilJl/meteofetch>`_, un package plus
+produit `meteofetch <https://github.com/CyrilJl/meteofetch>`_, un package plus
 généraliste couvrant les modèles Météo-France (AROME, ARPEGE, MFWAM) et les
 modèles ECMWF (IFS, AIFS). Les deux packages ciblent les mêmes serveurs ECMWF
-mais avec des cibles différentes — voir :ref:`comparison-meteofetch`.
+mais avec des philosophies différentes — voir :ref:`comparison-meteofetch`.
 
 
 .. _comparison-meteofetch:
@@ -458,70 +458,7 @@ actuelle :
    pour les utilisateurs non-météorologues.
 
 
-Guide de contribution
-----------------------
+.. seealso::
 
-Prérequis
-~~~~~~~~~~
-
-.. code-block:: bash
-
-   # Cloner le dépôt
-   git clone https://github.com/miki4iaml/meteopendata.git
-   cd meteopendata
-
-   # Installer en mode éditable avec les extras de développement
-   pip install -e ".[dev,docs]"
-
-   # Installer eccodes (requis par cfgrib)
-   # Linux
-   sudo apt-get install libeccodes-dev
-   # macOS
-   brew install eccodes
-   # Windows : inclus dans la wheel cfgrib, aucune action nécessaire
-
-Lancer la chaîne qualité complète
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-   # Lint
-   ruff check src tests
-   ruff format src tests
-
-   # Types
-   mypy src/meteopendata2netcdf
-
-   # Tests (hors réseau)
-   pytest -m "not network"
-
-   # Tests avec couverture
-   pytest -m "not network" --cov=meteopendata2netcdf --cov-report=term-missing
-
-   # Tests d'intégration réseau (télécharge ~5 Mo de données ECMWF réelles)
-   pytest -m network
-
-R�gles pour les pull requests
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. **Un PR = une fonctionnalité ou un correctif**. Les refactorisations et les
-   ajouts de fonctionnalités ne doivent pas être mélangés.
-
-2. **La CI doit être entièrement verte** (lint + mypy + tests sur les 6
-   combinaisons OS/Python) avant de demander une review.
-
-3. **Tout nouveau code public doit être couvert par des tests**. La couverture
-   ne doit pas descendre sous 80 %.
-
-4. **Les docstrings suivent le style Google** (supporté par Napoleon). Les
-   arguments, valeurs de retour et exceptions doivent être documentés.
-
-5. **Ne pas introduire de dépendances réseau dans les tests**. Toute
-   interaction avec ``ecmwf-opendata`` ou ``cfgrib`` doit être mockée.
-
-6. **Mettre à jour ``CHANGELOG.md``** avec une entrée dans la section
-   ``[Unreleased]`` pour chaque changement notable.
-
-7. **Ne pas modifier la version dans ``pyproject.toml``** dans un PR de
-   fonctionnalité — la version est incrémentée séparément au moment de la
-   release.
+   Le guide complet du contributeur (branches, CI, publication, ajout d'une
+   source) est documenté dans :ref:`contributing`.
